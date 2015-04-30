@@ -1,4 +1,4 @@
-package br.com.model;
+package br.com.opinion.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;

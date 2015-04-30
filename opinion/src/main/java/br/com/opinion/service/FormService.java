@@ -1,6 +1,6 @@
-package br.com.rest.service;
+package br.com.opinion.service;
 
-import br.com.model.Curso;
+import br.com.opinion.model.Curso;
 import com.google.gson.Gson;
 
 import javax.ws.rs.GET;
