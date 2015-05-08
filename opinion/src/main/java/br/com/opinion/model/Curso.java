@@ -1,6 +1,8 @@
 package br.com.opinion.model;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -8,13 +10,22 @@ import java.util.Date;
  */
 
 @XmlRootElement
+@Entity
+@Table(name = "tb_curso")
 public class Curso {
 
-    private String nome;
-    private String descricao;
-    private Date dataCriacao;
+    public Curso() {
+    }
 
-    public Curso(){ };
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String nome;
+
+    private String descricao;
+
+    private Date dataCriacao;
 
     public Curso(String nome, String descricao, Date dataCriacao) {
         this.nome = nome;
@@ -22,27 +33,5 @@ public class Curso {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Date getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(Date dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
 }

@@ -1,8 +1,10 @@
 package br.com.opinion.service;
 
+import br.com.opinion.dao.GenericDAO;
 import br.com.opinion.model.Curso;
 import com.google.gson.Gson;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -17,11 +19,15 @@ import java.util.Date;
 @Path("/form")
 public class FormService {
 
+    @Inject
+    GenericDAO genericDAO;
+
     @GET
     @Path("/{param}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCurso(@PathParam(value="param") String nome) {
         Curso curso = new Curso(nome, "Primeiro curso criado", new Date());
+        genericDAO.save(curso);
         return Response.status(Response.Status.OK).entity(new Gson().toJson(curso)).build();
     }
 }
